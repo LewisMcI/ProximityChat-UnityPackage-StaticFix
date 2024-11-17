@@ -63,7 +63,8 @@ namespace ProximityChat
             }
             
             // Create 3D sound in loop mode and allow direct writing to sound data
-            RuntimeManager.CoreSystem.createSound(_soundParams.userdata,MODE.LOOP_NORMAL | MODE.OPENUSER | MODE._3D, ref _soundParams, out _voiceSound);
+            if (!_voiceSound.hasHandle())
+                RuntimeManager.CoreSystem.createSound(_soundParams.userdata,MODE.LOOP_NORMAL | MODE.OPENUSER | MODE._3D, ref _soundParams, out _voiceSound);
             // Flag initialized
             _initialized = true;
         }
